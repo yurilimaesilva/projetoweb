@@ -35,10 +35,26 @@ try {
     include('../../config/dbconfig.php');
     $db = new conn;
     $start = $db->start();
+    //Nome da tabela para se verificar
+    $tabela = 'aluno';
+    //Consulta SQL para verificar
+    $con_tabela = 'SHOW TABLES LIKE ?';
+    //Preparar a consulta
+    $stmt = $start->prepare($con_tabela);
+    $stmt->execute([$tabela]);
 
-    $res = $db->exec(
-        "CREATE TABLE IF NOT EXISTS aluno (
-        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    //verificar se a tabela existe
+    if ($stmt->rowCount() > 0){
+      $stmt = $db->exec(
+
+        "INSERT INTO aluno (nome, materia, nota1, nota2, media, situacao) 
+        VALUES ('$nome', '$materia', '$nota1', '$nota2', '$media', '$situacao')"
+      );
+    }
+    else{
+      $res = $db->exec(
+        "CREATE TABLE aluno (
+        id INTEGER PRIMARY KEY AUTO_INCREMENT, 
         nome TEXT, 
         materia TEXT, 
         nota1 INT,
@@ -46,12 +62,15 @@ try {
         media INT,
         situacao TEXT
         )"
-    );
+      );
   
-    $stmt = $db->exec(
+      $stmt = $db->exec(
         "INSERT INTO aluno (nome, materia, nota1, nota2, media, situacao) 
         VALUES ('$nome', '$materia', '$nota1', '$nota2', '$media', '$situacao')"
-    );
+      );
+    }
+
+
 
     echo' <div class="alert alert-success" role="alert">
          Aluno inserido com sucesso.

@@ -1,6 +1,7 @@
 <?php
 
 class conn {
+    
     private $host = HOST;
     private $user = USER;
     private $password = PASSWORD;
@@ -8,9 +9,10 @@ class conn {
     private $conect = null;
 
     public function start(){
+        
         try {
             if (empty($this->conect)) {
-                $this->conect = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname.'',$this->user,$this->password);
+                $this->conect = new PDO(''.$this->host.';'.$this->dbname.'',$this->user,$this->password);
             }
         }
         catch(Exception $erro){

@@ -9,11 +9,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Exclusão de Alunos</title>
   </head>
   <body>
     <div class="container">
-        <h1>Exclusão de dados</h1>
+        <h1>Exclusão de aluno</h1>
 
         <?php 
         $id = $_GET['id'];
@@ -27,11 +27,11 @@
 
 
                 $stmt = $db->exec(
-                    "delete from usuario where id = $id"
+                    "delete from aluno where id = $id"
                 );
 
                 echo' <div class="alert alert-success" role="alert">
-                    Usuário excluído com sucesso.
+                    Aluno excluído com sucesso.
                     </div>';
                 // Garbage collect db
                 $db = null;
@@ -44,7 +44,7 @@
             }
 
         ?>
-        <a href="consulta.php" type="button" class="btn btn-primary btn-lg">Voltar</a>
+        <a href="consulta-aluno.php" type="button" class="btn btn-primary btn-lg">Voltar</a>
     </div>
         <!-- Optional JavaScript; choose one of the two! -->
         

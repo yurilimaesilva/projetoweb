@@ -38,7 +38,7 @@ try {
 
 
   $stmt = $db->exec(
-    "update aluno set nome='$nome', materia='$materia', nota1='$nota1', nota2'$nota2', media='$media', situacao='$situacao'
+    "update aluno set nome='$nome', materia='$materia', nota1='$nota1', nota2='$nota2', media='$media', situacao='$situacao'
       where id = $id"
   );
 

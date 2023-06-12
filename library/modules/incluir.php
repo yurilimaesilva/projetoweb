@@ -23,22 +23,41 @@ $senha=$_GET['senha'];
 try {
     include('../services/conection.php');
     include('../../config/dbconfig.php');
-    $db = new conn;
+    $db = new conn();
     $start = $db->start();
+    //Nome da tabela para se verificar
+    $tabela = 'usuario';
+    //Consulta SQL para verificar
+    $con_tabela = 'SHOW TABLES LIKE ?';
+    //Preparar a consulta
+    $stmt = $start->prepare($con_tabela);
+    $stmt->execute([$tabela]);
 
-    $res = $db->exec(
-        "CREATE TABLE IF NOT EXISTS usuario (
-        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    //verificar se a tabela existe
+    if ($stmt->rowCount() > 0){
+
+      $stmt = $db->exec(
+        "INSERT INTO usuario (nome, email, senha) 
+        VALUES ('$nome', '$email', '$senha')"
+      );
+    }
+    else{
+
+      $res = $db->exec(
+        "CREATE TABLE usuario (
+        id INTEGER PRIMARY KEY AUTO_INCREMENT, 
         nome TEXT, 
         email TEXT, 
         senha TEXT
         )"
-    );
+      );
   
-    $stmt = $db->exec(
+      $stmt = $db->exec(
         "INSERT INTO usuario (nome, email, senha) 
         VALUES ('$nome', '$email', '$senha')"
-    );
+      );  
+    }
+
 
     echo' <div class="alert alert-success" role="alert">
          Usuário inserido com sucesso.
@@ -54,7 +73,7 @@ try {
 }
 
 ?>
-  <a href="consulta.php" type="button" class="btn btn-primary btn-lg">Voltar</a>
+  <a href="menu.php" type="button" class="btn btn-primary btn-lg">Menu</a>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
      

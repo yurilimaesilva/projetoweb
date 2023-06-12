@@ -48,7 +48,7 @@
                   <td>'.$linha['media'].'</td>
                   <td>'.$linha['situacao'].'</td>
                   <td>
-                  <a href="excluir.php?id='.$linha['id'].'"
+                  <a href="excluir-aluno.php?id='.$linha['id'].'"
                      class="btn btn-warning"> Excluir</a>
                   </td>
                   <td>
