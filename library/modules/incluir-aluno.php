@@ -86,7 +86,7 @@ try {
 }
 
 ?>
-  <a href="consulta-aluno.php" type="button" class="btn btn-primary btn-lg">Voltar</a>
+  <a href="menu.php" type="button" class="btn btn-primary btn-lg">Voltar</a>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
      

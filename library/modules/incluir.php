@@ -73,7 +73,7 @@ try {
 }
 
 ?>
-  <a href="menu.php" type="button" class="btn btn-primary btn-lg">Menu</a>
+  <a href="menu.php" type="button" class="btn btn-primary btn-lg">Tela inicial</a>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
      
